@@ -10,8 +10,7 @@ def run_all():
 
     dataset1 = "Something"
     dataset2 = "Something else"
-    datasets = [dataset1, dataset2]
-    dataset_names = ["First dataset", "Second dataset"]
+    all_datasets = [dataset1, dataset2]
 
     all_experiments = [result_generator]#, second_generator]
 
@@ -19,10 +18,10 @@ def run_all():
     savefigpath_root =  project_root / "figures"
     if not os.path.exists(savefigpath_root): os.mkdir(savefigpath_root)
 
-    for data, name in zip(datasets, dataset_names):
+    for dataset in zip(all_datasets):
         for experiment in all_experiments:
-            print(f"Running {experiment.__name__} ...")
-            experiment(data, name, show_figs=b_showfigs, save_figs=b_savefigs, savefigs_root=savefigpath_root)
+            print(f"Running {experiment.__name__} with {dataset} dataset ...")
+            experiment(dataset, show_figs=b_showfigs, save_figs=b_savefigs, savefigs_root=savefigpath_root)
 
 
 

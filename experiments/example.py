@@ -2,8 +2,10 @@ import os
 
 import matplotlib.pyplot as plt
 
+from src.datasets.dataset import Dataset
+
 def result_generator(
-    data, dataset_name, show_figs=True, save_figs=False, savefigs_root=None
+    dataset : Dataset, show_figs=True, save_figs=False, savefigs_root=None
 ):
     if save_figs:
         assert (
@@ -13,14 +15,14 @@ def result_generator(
 
     # Code here ...
 
-    plt.title(f"Title of result, {dataset_name} dataset")
+    plt.title(f"Title of result, {dataset} dataset")
 
     if save_figs:
         example_figs_subdir = "experiment_name"
         if not os.path.exists(savefigs_root / example_figs_subdir):
             os.mkdir(savefigs_root / example_figs_subdir)
         filepath = (
-            savefigs_root / example_figs_subdir / f"result-name_{dataset_name}.pdf"
+            savefigs_root / example_figs_subdir / f"result-name_{dataset}.pdf"
         )
         plt.savefig(filepath)
     if show_figs:
