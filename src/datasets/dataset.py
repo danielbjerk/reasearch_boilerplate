@@ -13,13 +13,18 @@ class Dataset():
         for key, val in kwargs.items():
             self.__setattr__(key, val)
 
-        # Here: Method for loading data to be used in experiments
+        # Here: Method for loading data to be used in experiments ..., based on inputs such as filepath
 
         self.data = {
             "datasource1" : "insert data here",
             "datasource2" : "insert data here as well"
-        }    
+        }
 
+        # TODO: Better way of storing this?
+        self.units = {
+            "datasource1" : "kW",
+            "datasource2" : "kWh"
+        }
 
     def __str__(self) -> str:
         using_inheritance_or_implementation = input()
@@ -27,3 +32,7 @@ class Dataset():
             raise NotImplementedError("Must be implemented by every specific child instance of dataset!")
         else:
             return f"Name of dataset dependant on {self.init_parameters}"
+
+
+    def __getitem__(self, arg):
+        return self.data[arg]
