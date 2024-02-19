@@ -27,15 +27,15 @@ class Dataset():
         }
 
     def __str__(self) -> str:
-        using_inheritance_or_implementation = input()
-        if using_inheritance_or_implementation == "inheritance":
-            raise NotImplementedError("Must be implemented by every specific child instance of dataset!")
-        else:
-            return f"Name of dataset dependant on {self.init_parameters}"
+        # Set by specific child instances, or by some parameter
+        return "Dataset"
 
 
     def __getitem__(self, arg):
-        return self.data[arg]
+        if arg in self.data:
+            return self.data[arg]
+        else:
+            return self.__getattribute__(arg)
 
 
     def __setitem__(self, key, val):
