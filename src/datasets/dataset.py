@@ -36,3 +36,7 @@ class Dataset():
 
     def __getitem__(self, arg):
         return self.data[arg]
+
+
+    def __setitem__(self, key, val):
+        self.data[key] = val

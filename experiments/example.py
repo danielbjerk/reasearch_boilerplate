@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from src.datasets.dataset import Dataset
 
 def result_generator(
-    dataset : Dataset, show_figs=True, save_figs=False, savefigs_root=None
+    dataset : Dataset, show_figs=True, save_figs=False, savefigs_root=None, optional_parameter="Value", **kwargs
 ):
     if save_figs:
         assert (
@@ -13,7 +13,16 @@ def result_generator(
         ), "When saving figures, you need to supply a savefig root"
 
 
-    # Code here ...
+    # Code generating results here ...
+
+
+
+
+
+    fig = plt.figure()
+    ax = fig.add_subplot()
+
+    # Code plotting results here ...
 
     plt.title(f"Title of result, {dataset} dataset")
 
@@ -25,6 +34,8 @@ def result_generator(
             savefigs_root / example_figs_subdir / f"result-name_{dataset}.pdf"
         )
         plt.savefig(filepath)
+
+        # TODO: Lagre .tex-fil med figuren
     if show_figs:
         plt.show()
     plt.close()
