@@ -1,42 +1,28 @@
-import os
-
 import matplotlib.pyplot as plt
 
-from src.datasets.dataset import Dataset
+from src.datasets.dataset import Dataset        # TODO: Move dataset to experiments module
+from .result_handler.result_handler import ResultHandler
 
-def result_generator(
-    dataset : Dataset, show_figs=True, save_figs=False, savefigs_root=None, optional_parameter="Value", **kwargs
-):
-    if save_figs:
-        assert (
-            savefigs_root is not None
-        ), "When saving figures, you need to supply a savefig root"
+from package1.calculation import advanced_calc
 
+def result_generator(dataset : Dataset, figure_handler : ResultHandler, optional_parameter="Value", **kwargs):
 
     # Code generating results here ...
+    x = dataset["x"]
+    y = dataset["y"]
+
+    result = advanced_calc.perform_advanced_calc(x, y)
 
 
-
-
-
+    # Code plotting results here ...
     fig = plt.figure()
     ax = fig.add_subplot()
 
-    # Code plotting results here ...
+    plt.plot(result)
 
+    #plt.xlabel(f"Value [{dataset.units["x"]}]")
+    #plt.ylabel(f"Value [{dataset.units["y"]}]")
     plt.title(f"Title of result, {dataset} dataset")
+    plt.tight_layout()
 
-    if save_figs:
-        example_figs_subdir = "experiment_name"
-        if not os.path.exists(savefigs_root / example_figs_subdir):
-            os.mkdir(savefigs_root / example_figs_subdir)
-        filepath = (
-            savefigs_root / example_figs_subdir / f"result-name_{dataset}.pdf"
-        )
-        plt.savefig(filepath)
-
-        # TODO: Lagre .tex-fil med figuren
-    if show_figs:
-        plt.show()
-    plt.close()
-    return
+    figure_handler.finalize_figure(fig, figname=f"result-title-shortened_{dataset}", experiment_name="result_generator")
