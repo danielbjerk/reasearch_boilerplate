@@ -1,12 +1,13 @@
 [project]
-name = ""
-version = ""
+name = "example_project"
+version = "1.0"
 description = ""
 authors = [
     {name = "Daniel Bjerkehagen", email = "daniel.bjerkehagen@sintef.no"},
 ]
-dependencies = []
-requires-python = ">=3.8"
+dependencies = [
+]
+requires-python = ">=3.10"
 readme = "README.md"
 license = {text = "MIT"}
 
