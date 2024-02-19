@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 
-from src.datasets.dataset import Dataset        # TODO: Move dataset to experiments module
+from .datasets.dataset import Dataset
 from .result_handler.result_handler import ResultHandler
 
 from package1.calculation import advanced_calc

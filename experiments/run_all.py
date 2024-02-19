@@ -1,5 +1,5 @@
 from .result_handler.result_handler import ResultHandler
-from src.datasets.dataset import Dataset
+from .datasets.dataset import Dataset
 
 from experiments.example import result_generator
 
