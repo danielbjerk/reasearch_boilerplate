@@ -22,7 +22,7 @@ class ResultHandler():
     def _save_figure(self, fig, figname, experiment_name, other_filetype=None):
         experiment_subdir = Path(self.figure_dir / experiment_name)
         Path.mkdir(experiment_subdir, exist_ok=True)
-        filetype = self.figure_filtype if other_filetype is not None else other_filetype
+        filetype = self.figure_filtype if other_filetype is None else other_filetype
         filepath = experiment_subdir / (figname + filetype)
         fig.savefig(filepath)
         # TODO: Lagre .tex-fil med figuren
