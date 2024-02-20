@@ -5,7 +5,7 @@ from experiments.example import result_generator
 
 
 def run_all():
-    res_handler = ResultHandler(r"\\figures\\", show_figs=True, save_figs=False)
+    res_handler = ResultHandler(r"figures\\", show_figs=True, save_figs=False)
 
     dataset1 = Dataset(x=[1], y=[2])
     dataset2 = Dataset(x=[2], y=[3])
