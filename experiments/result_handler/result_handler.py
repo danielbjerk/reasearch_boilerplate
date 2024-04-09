@@ -3,7 +3,7 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 
 class ResultHandler():
-    def __init__(self, result_dir, figure_dir=None, show_figs=True, save_figs=False, presentation_mode=False) -> None:
+    def __init__(self, result_dir=r".results\\", figure_dir=None, show_figs=True, save_figs=False, presentation_mode=False) -> None:
         if isinstance(result_dir, str): result_dir = Path(result_dir)
         if isinstance(figure_dir, str): figure_dir = Path(figure_dir)
         if figure_dir is None: figure_dir = result_dir
