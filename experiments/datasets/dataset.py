@@ -9,7 +9,7 @@ functions for reading data, while implementations/inherited datasets
 
 class Dataset():
     def __init__(self, *args, **kwargs) -> None:
-        
+
         for key, val in kwargs.items():
             self.__setattr__(key, val)
 
@@ -30,13 +30,15 @@ class Dataset():
         # Set by specific child instances, or by some parameter
         return "Dataset"
 
-
     def __getitem__(self, arg):
         if arg in self.data:
             return self.data[arg]
         else:
             return self.__getattribute__(arg)
 
-
     def __setitem__(self, key, val):
         self.data[key] = val
+
+    def preprocess(self, *args, **kwargs):
+        # Abstract preprocessing function to be overwritten by every child dataset
+        return
